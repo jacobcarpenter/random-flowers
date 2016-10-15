@@ -1,6 +1,8 @@
+import { formatColorChannel } from './utility';
+
 const maxSteps = 150;
 
-class Sprout {
+export default class Sprout {
 	constructor(x, y) {
 		this.x = x;
 		this.y = y;

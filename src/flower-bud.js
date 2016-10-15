@@ -1,6 +1,8 @@
+import { formatColorChannel } from './utility';
+
 const flowerSteps = 100;
 
-class FlowerBud {
+export default class FlowerBud {
 	constructor(x, y) {
 		this.x = x;
 		this.y = y;

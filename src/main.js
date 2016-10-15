@@ -1,3 +1,7 @@
+import Sprout from './sprout';
+import FlowerBud from './flower-bud';
+import { formatColorChannel } from './utility';
+
 const canvas = document.createElement("canvas");
 canvas.width = 600;
 canvas.height = 400;
