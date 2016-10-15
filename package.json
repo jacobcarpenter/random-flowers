@@ -1,0 +1,12 @@
+{
+  "name": "random-flowers",
+  "version": "1.0.0",
+  "description": "Draws random flowers",
+  "main": "index.html",
+  "author": "Jacob Carpenter <jacobcarpenter@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "2.1.0-beta.25"
+  }
+}
