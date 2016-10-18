@@ -15,7 +15,6 @@ ctx.fillRect(0, 0, canvas.width, canvas.height);
 let sprouts = [];
 for (let i = 0; i < 7; ++i) {
 	const x = Math.random() * canvas.width;
-	const yDev = 15;
 	const y = randomizeAround(3 * canvas.height / 4, 15);
 	sprouts.push(new Sprout(x, y));
 }
