@@ -1,6 +1,6 @@
 import Sprout from './sprout';
 import FlowerBud from './flower-bud';
-import { formatColorChannel } from './utility';
+import { formatColorChannel, randomizeAround } from './utility';
 
 const canvas = document.createElement("canvas");
 canvas.width = 600;
@@ -16,27 +16,28 @@ let sprouts = [];
 for (let i = 0; i < 7; ++i) {
 	const x = Math.random() * canvas.width;
 	const yDev = 15;
-	const y = 3 * canvas.height / 4 + (yDev - Math.random() * yDev * 2);
+	const y = randomizeAround(3 * canvas.height / 4, 15);
 	sprouts.push(new Sprout(x, y));
+}
+
+function getGrassColor() {
+	const r = formatColorChannel(Math.random() * 66);
+	const g = formatColorChannel(195 + Math.random() * 66);
+	const b = formatColorChannel(Math.random() * 66);
+
+	return `#${r}${g}${b}`;
 }
 
 let grassCount = 4000;
 function drawGrass() {
-	const deltaY = 40;
-	const deltaX = 7;
-
 	for (var i = 0; i < 30; ++i) {
 		const x = Math.random() * canvas.width;
-		const x2 = x - deltaX + Math.random() * deltaX * 2;
+		const x2 = randomizeAround(x, 7);
 
 		const y = canvas.height - (Math.random() * canvas.height / 3);
-		const y2 = y - deltaY + Math.random() * deltaY * 2;
+		const y2 = randomizeAround(y, 40);
 
-		const r = formatColorChannel(Math.random() * 66);
-		const g = formatColorChannel(195 + Math.random() * 66);
-		const b = formatColorChannel(Math.random() * 66);
-
-		ctx.strokeStyle = `#${r}${g}${b}`;
+		ctx.strokeStyle = getGrassColor();
 
 		ctx.beginPath();
 		ctx.moveTo(x, y);

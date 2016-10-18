@@ -7,11 +7,7 @@ export default class Sprout {
 		this.x = x;
 		this.y = y;
 		this.steps = 0;
-
-		const r = formatColorChannel(Math.random() * 128);
-		const g = '99';
-		const b = formatColorChannel(Math.random() * 128);
-		this.color = `#${r}${g}${b}`;
+		this.color = getSproutColor();
 	}
 
 	step(context) {
@@ -32,4 +28,12 @@ export default class Sprout {
 
 		return this.y >= 0 && this.steps < maxSteps;
 	}
+}
+
+function getSproutColor() {
+	const r = formatColorChannel(Math.random() * 128);
+	const g = '99';
+	const b = formatColorChannel(Math.random() * 128);
+
+	return `#${r}${g}${b}`;
 }
