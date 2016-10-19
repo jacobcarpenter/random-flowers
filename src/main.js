@@ -1,13 +1,12 @@
-import PIXI, { Container } from 'pixi.js';
+import PIXI, { Container, Graphics, utils } from 'pixi.js';
 import Sprout from './sprout';
 import FlowerBud from './flower-bud';
-import { formatColorChannel, randomizeAround } from './utility';
+import { formatColorChannel, formatColorChannel2, randomizeAround } from './utility';
 
-const renderer = PIXI.autoDetectRenderer(640, 480, { backgroundColor: 0xF0FFFF });
+const renderer = PIXI.autoDetectRenderer(600, 400, { antialias: true, backgroundColor: 0xF0FFFF });
 document.body.appendChild(renderer.view);
 
 const scene = new Container();
-renderer.render(scene);
 
 const canvas = document.createElement("canvas");
 canvas.width = 600;
@@ -34,8 +33,36 @@ function getGrassColor() {
 	return `#${r}${g}${b}`;
 }
 
+function getGrassColor2() {
+	const r = Math.floor(Math.random() * 66);
+	const g = Math.floor(Math.min(255, 195 + Math.random() * 66));
+	const b = Math.floor(Math.random() * 66);
+	return r << 16 | g << 8 | b;
+}
+
+const grassGraphics = new Graphics();
+scene.addChild(grassGraphics);
+
+let grassCount2 = 4000;
+function drawGrass2() {
+	for (let i = 0; i < 30; ++i) {
+		const x = Math.random() * renderer.width;
+		const x2 = randomizeAround(x, 7);
+
+		const y = renderer.height - (Math.random() * renderer.height / 3);
+		const y2 = randomizeAround(y, 40);
+
+		grassGraphics.lineStyle(1, getGrassColor2(), 1);
+		grassGraphics.moveTo(x, y);
+		grassGraphics.lineTo(x2, y2);
+	}
+
+	renderer.render(scene);
+}
+
 let grassCount = 4000;
 function drawGrass() {
+	drawGrass2();
 	for (var i = 0; i < 30; ++i) {
 		const x = Math.random() * canvas.width;
 		const x2 = randomizeAround(x, 7);
