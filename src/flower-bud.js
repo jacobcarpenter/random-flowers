@@ -1,4 +1,4 @@
-import { formatColorChannel, randomizeAround } from './utility';
+import { clamp, randomizeAround } from './utility';
 
 const flowerSteps = 100;
 
@@ -22,8 +22,9 @@ export default class FlowerBud {
 			--this.y;
 		}
 
-		context.fillStyle = this.color;
-		context.fillRect(this.x, this.y, 3, 3);
+		context.beginFill(this.color, 1);
+		context.drawRect(this.x, this.y, 3, 3);
+		context.endFill();
 
 		++this.steps;
 		return this.steps < flowerSteps;
@@ -31,9 +32,8 @@ export default class FlowerBud {
 }
 
 function getFlowerColor() {
-	const r = formatColorChannel(randomizeAround(85, 32));
-	const g = formatColorChannel(Math.random() * 52);
-	const b = formatColorChannel(randomizeAround(139, 40));
-
-	return `#${r}${g}${b}`;
+	const r = clamp(randomizeAround(85, 32));
+	const g = clamp(Math.random() * 52);
+	const b = clamp(randomizeAround(139, 40));
+	return r << 16 | g << 8 | b;
 }

@@ -22,8 +22,9 @@ export default class Sprout {
 			++this.x;
 		}
 
-		context.fillStyle = this.color;
-		context.fillRect(this.x, this.y, 1, 1);
+		context.beginFill(this.color, 1);
+		context.drawRect(this.x, this.y, 1, 1);
+		context.endFill();
 		++this.steps;
 
 		return this.y >= 0 && this.steps < maxSteps;
@@ -31,9 +32,8 @@ export default class Sprout {
 }
 
 function getSproutColor() {
-	const r = formatColorChannel(Math.random() * 128);
-	const g = '99';
-	const b = formatColorChannel(Math.random() * 128);
-
-	return `#${r}${g}${b}`;
+	const r = Math.floor(Math.random() * 128);
+	const g = 0x99;
+	const b = Math.floor(Math.random() * 128);
+	return r << 16 | g << 8 | b;
 }
