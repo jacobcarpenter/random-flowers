@@ -7,6 +7,7 @@ export default class FlowerBud {
 		this.x = x;
 		this.y = y;
 		this.steps = 0;
+		this.rectSize = 3;
 		this.color = getFlowerColor();
 	}
 
@@ -21,10 +22,6 @@ export default class FlowerBud {
 		} else if (direction === 3) {
 			--this.y;
 		}
-
-		context.beginFill(this.color, 1);
-		context.drawRect(this.x, this.y, 3, 3);
-		context.endFill();
 
 		++this.steps;
 		return this.steps < flowerSteps;

@@ -7,6 +7,7 @@ export default class Sprout {
 		this.x = x;
 		this.y = y;
 		this.steps = 0;
+		this.rectSize = 1;
 		this.color = getSproutColor();
 	}
 
@@ -22,11 +23,7 @@ export default class Sprout {
 			++this.x;
 		}
 
-		context.beginFill(this.color, 1);
-		context.drawRect(this.x, this.y, 1, 1);
-		context.endFill();
 		++this.steps;
-
 		return this.y >= 0 && this.steps < maxSteps;
 	}
 }

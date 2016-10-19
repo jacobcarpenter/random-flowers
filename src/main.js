@@ -56,6 +56,11 @@ function drawFlowers() {
 		sprouts = sprouts.reduce((ws, w) => {
 			const { x, y } = w;
 			const canSprout = w.step(sproutsGfx);
+
+			sproutsGfx.beginFill(w.color, 1);
+			sproutsGfx.drawRect(w.x, w.y, w.rectSize, w.rectSize);
+			sproutsGfx.endFill();
+
 			if (!canSprout) {
 				// add a flower
 				if (w instanceof Sprout && Math.random() < 0.3) {
