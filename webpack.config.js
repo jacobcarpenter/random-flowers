@@ -9,7 +9,7 @@ module.exports = {
 	},
 	module: {
 		loaders: [
-			{ test: /\.js$/, loader: 'babel' },
+			{ test: /\.js$/, include: path.resolve(__dirname, './src'), loader: 'babel' },
 		],
 	},
 };

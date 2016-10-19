@@ -1,6 +1,13 @@
+import PIXI, { Container } from 'pixi.js';
 import Sprout from './sprout';
 import FlowerBud from './flower-bud';
 import { formatColorChannel, randomizeAround } from './utility';
+
+const renderer = PIXI.autoDetectRenderer(640, 480, { backgroundColor: 0xF0FFFF });
+document.body.appendChild(renderer.view);
+
+const scene = new Container();
+renderer.render(scene);
 
 const canvas = document.createElement("canvas");
 canvas.width = 600;
